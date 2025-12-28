@@ -240,29 +240,27 @@ const handleProfileReorder = (fromIndex, toIndex) => {
 
 // --- Backup & Restore ---
 const exportBackup = () => {
+  alert('导出函数被调用了！');
+  
   try {
-    // dataStore.subscriptions 是一个 computed 属性，需要通过 .value 访问
-    // 它包含所有订阅和手动节点的完整列表（来自 subscriptionStore.items）
-    const allItems = dataStore.subscriptions.value || [];
+    // 尝试多种方式获取数据
+    console.log('[Export Debug] dataStore:', dataStore);
+    console.log('[Export Debug] dataStore.subscriptions:', dataStore.subscriptions);
+    console.log('[Export Debug] subscriptions from composable:', subscriptions.value);
+    console.log('[Export Debug] manualNodes from composable:', manualNodes.value);
+    console.log('[Export Debug] profiles:', profiles.value);
     
-    // 添加调试日志
-    console.log('[Export] Total items:', allItems.length);
-    console.log('[Export] All items:', allItems);
-    console.log('[Export] Profiles:', profiles.value);
-    
-    // 分离订阅和手动节点
-    const subscriptionItems = allItems.filter(item => item.url && /^https?:\/\//.test(item.url));
-    const manualNodeItems = allItems.filter(item => !item.url || !/^https?:\/\//.test(item.url));
-    
-    console.log('[Export] Subscriptions:', subscriptionItems.length);
-    console.log('[Export] Manual Nodes:', manualNodeItems.length);
-    console.log('[Export] Profiles:', profiles.value?.length || 0);
-    
+    // 使用 composables 的数据（这些已经是过滤后的，但至少能看到是否有数据）
     const backupData = {
-      subscriptions: subscriptionItems,
-      manualNodes: manualNodeItems,
+      subscriptions: subscriptions.value || [],
+      manualNodes: manualNodes.value || [],
       profiles: profiles.value || [],
     };
+    
+    console.log('[Export] Backup data:', backupData);
+    console.log('[Export] Subscriptions count:', backupData.subscriptions.length);
+    console.log('[Export] Manual nodes count:', backupData.manualNodes.length);
+    console.log('[Export] Profiles count:', backupData.profiles.length);
 
     const jsonString = JSON.stringify(backupData, null, 2);
     const blob = new Blob([jsonString], { type: 'application/json' });
@@ -280,6 +278,7 @@ const exportBackup = () => {
     showToast('备份已成功导出', 'success');
   } catch (error) {
     console.error('Backup export failed:', error);
+    alert('导出失败: ' + error.message);
     showToast('备份导出失败', 'error');
   }
 };
