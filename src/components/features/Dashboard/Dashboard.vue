@@ -239,33 +239,30 @@ const handleProfileReorder = (fromIndex, toIndex) => {
 };
 
 // --- Backup & Restore ---
+// 使用与经典布局完全相同的导出逻辑
+// 注意：dataStore.subscriptions 包含所有订阅和手动节点（未过滤）
+// 而 subscriptions/manualNodes composables 返回的是过滤后的数据
 const exportBackup = () => {
-  alert('导出函数被调用了！');
-  
   try {
-    // 尝试多种方式获取数据
-    console.log('[Export Debug] dataStore:', dataStore);
-    console.log('[Export Debug] dataStore.subscriptions:', dataStore.subscriptions);
-    console.log('[Export Debug] subscriptions from composable:', subscriptions.value);
-    console.log('[Export Debug] manualNodes from composable:', manualNodes.value);
-    console.log('[Export Debug] profiles:', profiles.value);
+    // 直接从 dataStore 获取原始数据（与经典布局一致）
+    // dataStore.subscriptions 是 computed，包含所有项目
+    // dataStore.profiles 是 computed，包含所有订阅组
+    const allSubscriptions = dataStore.subscriptions || [];
+    const allProfiles = dataStore.profiles || [];
     
-    // 使用 composables 的数据（这些已经是过滤后的，但至少能看到是否有数据）
+    // 分离订阅和手动节点（与后端存储格式一致）
+    const subscriptionItems = allSubscriptions.filter(item => item.url && /^https?:\/\//.test(item.url));
+    const manualNodeItems = allSubscriptions.filter(item => !item.url || !/^https?:\/\//.test(item.url));
+    
     const backupData = {
-      subscriptions: subscriptions.value || [],
-      manualNodes: manualNodes.value || [],
-      profiles: profiles.value || [],
+      subscriptions: subscriptionItems,
+      manualNodes: manualNodeItems,
+      profiles: allProfiles,
     };
     
-    console.log('[Export] Backup data:', backupData);
-    console.log('[Export] Subscriptions count:', backupData.subscriptions.length);
-    console.log('[Export] Manual nodes count:', backupData.manualNodes.length);
-    console.log('[Export] Profiles count:', backupData.profiles.length);
-
     const jsonString = JSON.stringify(backupData, null, 2);
     const blob = new Blob([jsonString], { type: 'application/json' });
     const url = URL.createObjectURL(blob);
-
     const a = document.createElement('a');
     a.href = url;
     const timestamp = new Date().toISOString().slice(0, 19).replace('T', '_').replace(/:/g, '-');
@@ -274,11 +271,9 @@ const exportBackup = () => {
     a.click();
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
-
     showToast('备份已成功导出', 'success');
   } catch (error) {
     console.error('Backup export failed:', error);
-    alert('导出失败: ' + error.message);
     showToast('备份导出失败', 'error');
   }
 };
