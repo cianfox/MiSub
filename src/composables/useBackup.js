@@ -1,17 +1,21 @@
-import { useSessionStore } from '../stores/session';
+import { useDataStore } from '../stores/useDataStore';
 import { useToastStore } from '../stores/toast';
+import { useManualNodes } from './useManualNodes';
 
 export function useBackup() {
-  const sessionStore = useSessionStore();
+  const dataStore = useDataStore();
   const { showToast } = useToastStore();
+
+  // 获取数据 - 与经典布局完全相同的方式
+  const { subscriptions, profiles } = dataStore;
+  const { manualNodes } = useManualNodes(() => { });
 
   const exportBackup = () => {
     try {
       const backupData = {
-        subscriptions: sessionStore.subscriptions,
-        manualNodes: sessionStore.manualNodes,
-        profiles: sessionStore.profiles,
-        // 可以选择性地添加其他需要备份的设置
+        subscriptions: subscriptions || [],
+        manualNodes: manualNodes.value || [],
+        profiles: profiles || [],
       };
 
       const jsonString = JSON.stringify(backupData, null, 2);
@@ -51,20 +55,17 @@ export function useBackup() {
           const backupData = JSON.parse(e.target.result);
 
           // 数据验证
-          if (!backupData || !Array.isArray(backupData.subscriptions) || !Array.isArray(backupData.manualNodes) || !Array.isArray(backupData.profiles)) {
+          if (!backupData || !Array.isArray(backupData.subscriptions)) {
             throw new Error('无效的备份文件格式');
           }
 
           if (confirm('这将覆盖您当前的所有数据，确定要从备份中恢复吗？')) {
-            sessionStore.$patch({
-              subscriptions: backupData.subscriptions,
-              manualNodes: backupData.manualNodes,
-              profiles: backupData.profiles,
-            });
-            // 可能需要触发一个动作来保存这些数据到后端
-            sessionStore.markAllDirty(); 
-            showToast('数据恢复成功，正在保存...', 'success');
-            // 可以在这里添加一个保存到后端的调用
+            // 合并订阅和手动节点
+            const merged = [...(backupData.subscriptions || []), ...(backupData.manualNodes || [])];
+            dataStore.overwriteSubscriptions(merged);
+            dataStore.overwriteProfiles(backupData.profiles || []);
+            dataStore.markDirty();
+            showToast('数据已恢复，请保存', 'success');
           }
         } catch (error) {
           console.error('Backup import failed:', error);

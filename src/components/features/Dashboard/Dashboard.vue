@@ -3,11 +3,12 @@ import { ref, computed, onMounted, onUnmounted, defineAsyncComponent } from 'vue
 import { extractNodeName } from '../../../lib/utils.js';
 import { useToastStore } from '../../../stores/toast.js';
 import { useUIStore } from '../../../stores/ui.js';
-import { useDataStore } from '../../../stores/useDataStore.js'; // Added
+import { useDataStore } from '../../../stores/useDataStore.js';
 import { useSubscriptions } from '../../../composables/useSubscriptions.js';
 import { useManualNodes } from '../../../composables/useManualNodes.js';
 import { useProfiles } from '../../../composables/useProfiles.js';
-import { storeToRefs } from 'pinia'; // Added
+import { useBackup } from '../../../composables/useBackup.js'; // 添加 useBackup
+import { storeToRefs } from 'pinia';
 
 // --- Component Imports ---
 import RightPanel from '../../profiles/RightPanel.vue';
@@ -70,6 +71,10 @@ const {
   handleSaveProfile, handleDeleteProfile, handleDeleteAllProfiles, copyProfileLink,
   cleanupSubscriptions, cleanupNodes, cleanupAllSubscriptions, cleanupAllNodes,
 } = useProfiles(markDirty);
+
+// 使用共享的备份功能（与经典布局相同）
+const { exportBackup, importBackup } = useBackup();
+
 // --- UI State ---
 
 const editingSubscription = ref(null);
@@ -238,87 +243,8 @@ const handleProfileReorder = (fromIndex, toIndex) => {
   markDirty();
 };
 
-// --- Backup & Restore ---
-// 修复：dataStore.subscriptions 是 computed 属性，直接访问会返回 undefined
-// 需要使用已经通过 storeToRefs 解构的变量，或者创建新的 refs
-const exportBackup = () => {
-  try {
-    // 方法1：直接使用 storeToRefs 获取响应式引用
-    const { subscriptions: allItems, profiles: allProfiles } = storeToRefs(dataStore);
-    
-    console.log('=== 导出备份调试信息 ===');
-    console.log('1. allItems (通过 storeToRefs):', allItems.value);
-    console.log('2. allProfiles (通过 storeToRefs):', allProfiles.value);
-    console.log('3. allItems 数量:', allItems.value?.length || 0);
-    console.log('4. allProfiles 数量:', allProfiles.value?.length || 0);
-    
-    // 从所有项目中过滤出手动节点
-    const manualNodeItems = allItems.value?.filter(item => !item.url || !/^https?:\/\//.test(item.url)) || [];
-    
-    console.log('5. 过滤后的手动节点数量:', manualNodeItems.length);
-    
-    const backupData = {
-      subscriptions: allItems.value || [],
-      manualNodes: manualNodeItems,
-      profiles: allProfiles.value || [],
-    };
-    
-    console.log('6. 最终备份数据:', backupData);
-    console.log('=== 调试信息结束 ===');
-    
-    const jsonString = JSON.stringify(backupData, null, 2);
-    const blob = new Blob([jsonString], { type: 'application/json' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    const timestamp = new Date().toISOString().slice(0, 19).replace('T', '_').replace(/:/g, '-');
-    a.download = `misub-backup-${timestamp}.json`;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
-    showToast('备份已成功导出', 'success');
-  } catch (error) {
-    console.error('Backup export failed:', error);
-    showToast('备份导出失败', 'error');
-  }
-};
+// --- Backup & Restore 功能已由 useBackup composable 提供 ---
 
-const importBackup = () => {
-  const input = document.createElement('input');
-  input.type = 'file';
-  input.accept = 'application/json';
-
-  input.onchange = (event) => {
-    const file = event.target.files[0];
-    if (!file) return;
-
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      try {
-        const data = JSON.parse(e.target.result);
-        if (!data || !Array.isArray(data.subscriptions) || !Array.isArray(data.manualNodes) || !Array.isArray(data.profiles)) {
-          throw new Error('无效的备份文件格式');
-        }
-
-        if (confirm('这将覆盖您当前的所有数据（需要手动保存后生效），确定要从备份中恢复吗？')) {
-          // Merge subscriptions and manual nodes as they are stored together in the backend/store
-          const mergedSubscriptions = [...data.subscriptions, ...data.manualNodes];
-          dataStore.overwriteSubscriptions(mergedSubscriptions);
-          dataStore.overwriteProfiles(data.profiles);
-          markDirty();
-          showToast('数据已从备份恢复，请点击“保存更改”以持久化', 'success');
-          uiStore.hide(); // Close settings modal after import
-        }
-      } catch (error) {
-        console.error('Backup import failed:', error);
-        showToast(`备份导入失败: ${error.message}`, 'error');
-      }
-    };
-    reader.readAsText(file);
-  };
-  input.click();
-};
 const handleBulkImport = (importText, colorTag) => {
   if (!importText) return;
   const lines = importText.split('\n').map(line => line.trim()).filter(Boolean);
