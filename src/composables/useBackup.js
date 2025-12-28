@@ -7,15 +7,14 @@ export function useBackup() {
   const { showToast } = useToastStore();
 
   // 获取数据 - 与经典布局完全相同的方式
-  const { subscriptions, profiles } = dataStore;
   const { manualNodes } = useManualNodes(() => { });
 
   const exportBackup = () => {
     try {
       const backupData = {
-        subscriptions: subscriptions || [],
+        subscriptions: dataStore.subscriptions || [],
         manualNodes: manualNodes.value || [],
-        profiles: profiles || [],
+        profiles: dataStore.profiles || [],
       };
 
       const jsonString = JSON.stringify(backupData, null, 2);

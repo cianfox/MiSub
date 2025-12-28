@@ -1,0 +1,270 @@
+{
+  "subscriptions": [],
+  "manualNodes": [
+    {
+      "id": "a3a39d15-8862-4c3f-9d8d-738aa3a91641",
+      "name": "JP",
+      "url": "vless://f522e964-a2a2-48e2-adc8-7056f61c7da3@34.92.6.120:11113?type=tcp&security=reality&sni=www.lovelive-anime.jp&pbk=UK7qxWWGfRQcQfwaGpHnqmmqqJBut4jxve8AeDDJ2UI&flow=xtls-rprx-vision&fp=safari#JP",
+      "enabled": true,
+      "isUpdating": false
+    },
+    {
+      "id": "8fa7d756-1d47-4e0e-bcd0-d9d7b6712909",
+      "name": "Zouter HK",
+      "url": "vless://ea4530ab-02d3-41fb-e974-ddccfe7bdf70@155.117.82.9:32403?encryption=none&flow=xtls-rprx-vision&security=reality&sni=www.lovelive-anime.jp&fp=safari&pbk=cDaDzPr3PlS3NM8lreHZbdo-Mhqz8vMBzMSkHXhGIUA&type=tcp&headerType=none#Zouter%20HK",
+      "enabled": true,
+      "status": "unchecked",
+      "isUpdating": false
+    },
+    {
+      "id": "35e6551e-634f-4b9d-aa6d-43aa4b78492f",
+      "name": "LIme JP",
+      "url": "vless://17acd0de-6324-4469-aa94-996b03e39376@178.94.142.33:28215?encryption=none&flow=xtls-rprx-vision&security=reality&sni=www.lovelive-anime.jp&fp=safari&pbk=R2gKMF0Tetlnesc1pPkZH9NaOeehw-f5_U9JKG_cLjU&type=tcp&headerType=none#LIme%20JP",
+      "enabled": true,
+      "status": "unchecked",
+      "isUpdating": false
+    },
+    {
+      "id": "4abf22b3-613d-47fc-837a-966a78aba39a",
+      "name": "DE",
+      "url": "vmess://ew0KICAidiI6ICIyIiwNCiAgInBzIjogIkRFIiwNCiAgImFkZCI6ICIyMDUuMTk4Ljk0LjUiLA0KICAicG9ydCI6ICI0NDMiLA0KICAiaWQiOiAiMWE3Y2IxYTMtY2E4OS00NjUzLWE3YmQtNTM5MGZiZjlkYjU5IiwNCiAgImFpZCI6ICIwIiwNCiAgInNjeSI6ICJhdXRvIiwNCiAgIm5ldCI6ICJ3cyIsDQogICJ0eXBlIjogIm5vbmUiLA0KICAiaG9zdCI6ICJkZS5uYmVlLnBwLnVhIiwNCiAgInBhdGgiOiAiL2RlIiwNCiAgInRscyI6ICJ0bHMiLA0KICAic25pIjogImRlLm5iZWUucHAudWEiLA0KICAiYWxwbiI6ICJoMixodHRwLzEuMSIsDQogICJmcCI6ICJzYWZhcmkiDQp9",
+      "enabled": true,
+      "isUpdating": false
+    },
+    {
+      "id": "e6a403a0-9076-4d51-be16-db5c367bd25a",
+      "name": "HK",
+      "url": "vless://df4be15b-e55e-4643-d8b4-71a08eb509ec@q163.xjc.dpdns.org:17228?encryption=none&flow=xtls-rprx-vision&security=reality&sni=www.lovelive-anime.jp&fp=safari&pbk=g1f1wLjim5gOVGnI5LGUV0dL4iFXPoiepOPZfSxJe14&type=tcp&headerType=none#HK\n",
+      "enabled": true,
+      "isUpdating": false
+    },
+    {
+      "id": "a2df20d5-fb95-4a5a-91cf-c355ebea6a31",
+      "name": "🇭🇰 香港",
+      "url": "ss://YWVzLTI1Ni1nY206OTdmODFiMGItOTRjNi0zYjA2LTgxYzQtZjlmZGI5NzNiYTZk@qsxn4-g03.hk03-ae5.entry.v50708.dev:761#%F0%9F%87%AD%F0%9F%87%B0%20%E9%A6%99%E6%B8%AF",
+      "enabled": true,
+      "isUpdating": false
+    },
+    {
+      "id": "2d210cb2-db14-4103-878b-134110be26cc",
+      "name": "CNIX HK",
+      "url": "ss://YWVzLTEyOC1nY206Wm1FTVBnbjVYOGs3RTdYejJoOWZzbkR6MGs2OVhjejdJSlhPblFBZklQRTg@cnix.xjc.dpdns.org:28392#CNIX\n",
+      "enabled": true,
+      "isUpdating": false
+    },
+    {
+      "id": "258bf670-2c6d-42f7-a4cb-8ed2c6739ad7",
+      "name": "美国 🍐-Madcity 01",
+      "url": "vless://32d17ec8-d1c0-4db3-91c8-dad98bcf81a8@154.21.93.60:14691?encryption=none&security=tls&sni=madcity.123123123.shop&fp=chrome&allowInsecure=1&type=ws&host=madcity.123123123.shop&path=%2F%3Fed%3D2560#%E7%BE%8E%E5%9B%BD%20%F0%9F%8D%90-Madcity%2001",
+      "enabled": true,
+      "status": "unchecked",
+      "isUpdating": false
+    },
+    {
+      "id": "f414f1ac-7d59-4819-8023-4676605bfeff",
+      "name": "美国 🍐-Madcity 02",
+      "url": "vless://32d17ec8-d1c0-4db3-91c8-dad98bcf81a8@154.21.86.48:27507?encryption=none&security=tls&sni=madcity.123123123.shop&fp=chrome&allowInsecure=1&type=ws&host=madcity.123123123.shop&path=%2F%3Fed%3D2560#%E7%BE%8E%E5%9B%BD%20%F0%9F%8D%90-Madcity%2002",
+      "enabled": true,
+      "status": "unchecked",
+      "isUpdating": false
+    },
+    {
+      "id": "e0707ffa-19cd-4f05-aa17-91a67259ad53",
+      "name": "US_Snippets",
+      "url": "vless://30f535bc-a08a-4b21-b492-5b5f3852a0cd@saas.sin.fan:2096?encryption=none&security=tls&sni=snip.sinemp.nyc.mn&alpn=h3&fp=random&allowInsecure=1&type=ws&host=snip.sinemp.nyc.mn&path=%2Fproxyip%3Dsjc.o00o.ooo#US_Snippets\n",
+      "enabled": true,
+      "isUpdating": false
+    },
+    {
+      "id": "884c77b9-9945-443c-9802-f0e3c6c9f564",
+      "name": "US_Snippets_2",
+      "url": "vless://30f535bc-a08a-4b21-b492-5b5f3852a0cd@cf.877774.xyz:2096?encryption=none&security=tls&sni=snip.sinemp.nyc.mn&alpn=h3&fp=random&allowInsecure=1&type=ws&host=snip.sinemp.nyc.mn&path=%2Fproxyip%3Dsjc.o00o.ooo#US_Snippets_2\n",
+      "enabled": true,
+      "isUpdating": false
+    },
+    {
+      "id": "87009023-a076-4e83-85b1-7dd8ba28126e",
+      "name": "US_Snippets_3",
+      "url": "vless://30f535bc-a08a-4b21-b492-5b5f3852a0cd@108.162.198.54:443?encryption=none&security=tls&sni=snip.sinemp.nyc.mn&alpn=h3&fp=random&allowInsecure=1&type=ws&host=snip.sinemp.nyc.mn&path=%2Fproxyip%3Dsjc.o00o.ooo#US_Snippets_3",
+      "enabled": true,
+      "status": "unchecked",
+      "isUpdating": false
+    },
+    {
+      "id": "d96542a1-a948-41fc-9b3f-2e6cda433cfa",
+      "name": "US_Snippets_4",
+      "url": "vless://30f535bc-a08a-4b21-b492-5b5f3852a0cd@162.159.4.196:443?encryption=none&security=tls&sni=snip.sinemp.nyc.mn&alpn=h3&fp=random&allowInsecure=1&type=ws&host=snip.sinemp.nyc.mn&path=%2Fproxyip%3Dsjc.o00o.ooo#US_Snippets_4",
+      "enabled": true,
+      "status": "unchecked",
+      "isUpdating": false
+    },
+    {
+      "id": "0b98ecac-671a-4cb4-9fd7-5897d6b012c7",
+      "name": "HK-Netvigator",
+      "url": "vless://d59bfb7b-02e2-407a-8c92-4e4201f00546@hknat.clot.nyc.mn:13230?encryption=none&flow=xtls-rprx-vision&security=reality&sni=www.apple.com&fp=chrome&pbk=ntSwSt5_uoVuN2RVFupETfU4HsvMzAz2ShBtdgX88D8&sid=731c7a275d04b367&allowInsecure=1&type=tcp&headerType=none#HK-Netvigator",
+      "enabled": true,
+      "status": "unchecked",
+      "isUpdating": false
+    },
+    {
+      "id": "7ebcf637-8d53-4ef0-b1f9-68a01537a081",
+      "name": "HK-ALICE_NETWORKS_LTD",
+      "url": "vless://10f9b1ed-1dd1-4baa-8587-a8b2539f7a5a@alice.clot.nyc.mn:31801?encryption=none&flow=xtls-rprx-vision&security=reality&sni=www.apple.com&fp=chrome&pbk=zRJBwGnb5lcoZfkMOsbpq6nb2pw1XAymbGVpeLsgIgo&sid=f8650beecba18a52&type=tcp&headerType=none#HK-ALICE_NETWORKS_LTD",
+      "enabled": true,
+      "isUpdating": false
+    },
+    {
+      "id": "f3b13330-caf4-4167-b2e5-fb8c42b15ff4",
+      "name": "TW-Akari_Networks",
+      "url": "vless://fe2433b1-5dff-47d2-b8d3-3f889df32b2c@45.196.238.86:31800?encryption=none&flow=xtls-rprx-vision&security=reality&sni=www.apple.com&fp=chrome&pbk=lgv97cM_BbqCdqScZ1zFUpyDSXyKwGrqLbqhHuG2wxE&sid=44b8903bb94fe020&allowInsecure=1&type=tcp&headerType=none#TW-Akari_Networks",
+      "enabled": true,
+      "status": "unchecked",
+      "isUpdating": false
+    },
+    {
+      "id": "0c37339f-a399-4eb3-8e6d-d42824eb555e",
+      "name": "HK-Netvigator_BWG",
+      "url": "vless://d59bfb7b-02e2-407a-8c92-4e4201f00546@bwg.517400.xyz:56447?encryption=none&flow=xtls-rprx-vision&security=reality&sni=www.apple.com&fp=chrome&pbk=ntSwSt5_uoVuN2RVFupETfU4HsvMzAz2ShBtdgX88D8&sid=731c7a275d04b367&allowInsecure=1&type=tcp&headerType=none#HK-Netvigator_BWG",
+      "enabled": true,
+      "status": "unchecked",
+      "isUpdating": false
+    },
+    {
+      "id": "563c2542-10ce-4b5e-92a6-af2d8a28c739",
+      "name": "TW-Akari_BWG",
+      "url": "vless://fe2433b1-5dff-47d2-b8d3-3f889df32b2c@bwg.517400.xyz:45116?encryption=none&flow=xtls-rprx-vision&security=reality&sni=www.apple.com&fp=chrome&pbk=lgv97cM_BbqCdqScZ1zFUpyDSXyKwGrqLbqhHuG2wxE&sid=44b8903bb94fe020&allowInsecure=1&type=tcp&headerType=none#TW-Akari_BWG",
+      "enabled": true,
+      "status": "unchecked",
+      "isUpdating": false
+    },
+    {
+      "id": "83c45fa5-b84a-4613-9591-65b21117773c",
+      "name": "US_BWG",
+      "url": "vless://b21ff3f6-31c1-4c12-b9e8-50a1343a4baf@bwg.517400.xyz:23909?type=tcp&encryption=none&security=reality&pbk=nuJxoy3pRcsli3dA4uGEKvzQ86zcA_sXjbwOsPEw9zU&fp=chrome&sni=tesla.com&sid=58938a0926d5e706&spx=%2F&flow=xtls-rprx-vision#US_BWG",
+      "enabled": true,
+      "status": "unchecked",
+      "isUpdating": false
+    },
+    {
+      "id": "c87ad457-7b36-453e-a193-b8147138680a",
+      "name": "US_BWH",
+      "url": "ss://MjAyMi1ibGFrZTMtYWVzLTEyOC1nY206R3VLczJQTjU5eU1ob00yZnlCTG9tdz09OlVVcUFwbDVHOEtzWmlWT3I4emVVQlE9PQ@bwg.517400.xyz:36536?type=tcp#US_BWH",
+      "enabled": true,
+      "status": "unchecked",
+      "isUpdating": false
+    },
+    {
+      "id": "ba952161-7c3a-4a43-9e0b-9ec78e54a4b1",
+      "name": "GB-MassiveGRID",
+      "url": "hysteria2://2326ee86-df0d-4f91-a085-311d1283dd5f@185.184.70.120:54321?sni=www.bing.com&alpn=h3&insecure=1#GB-MassiveGRID",
+      "enabled": true,
+      "status": "unchecked",
+      "isUpdating": false
+    },
+    {
+      "id": "82692835-9e1c-4526-bf34-ef22d43c2dd0",
+      "name": "GB-MassiveGRID",
+      "url": "vless://369106eb-e494-4ec1-9a60-9b8bf13fa733@185.184.70.120:8038??encryption=none&security=reality&sni=www.iij.ad.jp&fp=chrome&pbk=4kwCzHZj2L91brSI-T8ReWWEYt3c1Uhbq5ZjMmZ2XSE&allowInsecure=1&type=grpc&authority=www.iij.ad.jp&serviceName=grpc&mode=gun#GB-MassiveGRID",
+      "enabled": true,
+      "status": "unchecked",
+      "isUpdating": false
+    },
+    {
+      "id": "150d9070-b347-480c-a97e-b874058d0648",
+      "name": "香港IX",
+      "url": "ss://MjAyMi1ibGFrZTMtYWVzLTEyOC1nY206aUx2SG44dGpXK0VTUXQzb0U3bEsvZz09@39.108.178.103:31501#%E9%A6%99%E6%B8%AFIX\n",
+      "enabled": true,
+      "isUpdating": false
+    },
+    {
+      "id": "4b812c98-090e-4400-8698-2f19802f9f82",
+      "name": "台湾IX",
+      "url": "vless://fe2433b1-5dff-47d2-b8d3-3f889df32b2c@39.108.178.103:31502?encryption=none&flow=xtls-rprx-vision&security=reality&sni=www.apple.com&fp=chrome&pbk=lgv97cM_BbqCdqScZ1zFUpyDSXyKwGrqLbqhHuG2wxE&sid=44b8903bb94fe020&type=tcp&headerType=none#%E5%8F%B0%E6%B9%BEIX\n",
+      "enabled": true,
+      "isUpdating": false
+    },
+    {
+      "id": "074f5027-f02b-451e-bf1b-7fee537fc01a",
+      "name": "香港IX Akile",
+      "url": "ss://MjAyMi1ibGFrZTMtYWVzLTEyOC1nY206TklMUnRDdkk3RU1WeWlOdHFNWjJjUT09@39.108.178.103:31504#%E9%A6%99%E6%B8%AFIX%20Akile\n",
+      "enabled": true,
+      "isUpdating": false
+    },
+    {
+      "id": "cc00f770-13fc-4cf9-ac75-a391ddbafbc9",
+      "name": "马来西亚家宽",
+      "url": "ss://YWVzLTEyOC1nY206c29DRzlId2M5WU84UXJqSzhTUFpxQXJSQVZMVktMRG5kUjljcmpESXJKZ28@bgp1.xjc.dpdns.org:20025?#%E9%A9%AC%E6%9D%A5%E8%A5%BF%E4%BA%9A%E5%AE%B6%E5%AE%BD\n",
+      "enabled": true,
+      "isUpdating": false
+    },
+    {
+      "id": "c20057b9-4217-4287-a0be-1846c0985892",
+      "name": "ACCK_HKCM",
+      "url": "vless://ae51fdb8-c243-44b5-afc7-e00df5f284c7@103.193.149.217:31800?encryption=none&flow=xtls-rprx-vision&security=reality&sni=www.nazhumi.com&fp=chrome&pbk=CWbW9XXzB25q-ZOdN7qD3d5vOmi5Yyk7_YkimLejvzc&sid=9b67d1ac21a81b37&type=tcp&headerType=none#ACCK_HKCM\n",
+      "enabled": true,
+      "isUpdating": false
+    },
+    {
+      "id": "7f1393ba-e2a6-414c-bdc1-c42b5bab610d",
+      "name": "小黄鸡-CNIX",
+      "url": "ss://YWVzLTEyOC1nY206QUNxUGZ6ZFpVWEJCSzA4UUFhNlhBbWM4cVZRZE9mRXFUaWVTM2l1ZUE0VG4@cnix.xjc.dpdns.org:11010?#%E5%B0%8F%E9%BB%84%E9%B8%A1-CNIX",
+      "enabled": true,
+      "isUpdating": false
+    },
+    {
+      "id": "3f9add5f-7a53-4283-9440-e05112e2bc12",
+      "name": "JP-CyberverseLLC",
+      "url": "vless://cea2ce10-5c8a-4bda-8d37-abd2caa2d4c5@143.14.106.59:63477?encryption=none&flow=xtls-rprx-vision&security=reality&sni=www.iij.ad.jp&fp=firefox&pbk=uyO8thqBk3aVt8JicT6cOnzc_0XdNi0ICwSo8FCBoSI&type=tcp&headerType=none#JP-CyberverseLLC",
+      "enabled": true,
+      "isUpdating": false
+    },
+    {
+      "id": "19e56bf3-defa-487b-b09f-e31c096804ab",
+      "name": "台湾hinet_土豆",
+      "url": "ss://MjAyMi1ibGFrZTMtYWVzLTEyOC1nY206alZ4dlVyVXJlSStXREh3WmtqcVZaZz09@hn.otds.nyc.mn:40956#%E5%8F%B0%E6%B9%BEhinet_%E5%9C%9F%E8%B1%86",
+      "enabled": true,
+      "status": "unchecked",
+      "isUpdating": false
+    },
+    {
+      "id": "d5bab178-89a1-4059-9134-01166b809aff",
+      "name": "台湾hinet_土豆_IX",
+      "url": "ss://MjAyMi1ibGFrZTMtYWVzLTEyOC1nY206alZ4dlVyVXJlSStXREh3WmtqcVZaZz09@39.108.178.103:31505#%E5%8F%B0%E6%B9%BEhinet_%E5%9C%9F%E8%B1%86_IX",
+      "enabled": true,
+      "status": "unchecked",
+      "isUpdating": false
+    },
+    {
+      "id": "27fb2a5f-6c35-4afe-a77a-191e5cd82e41",
+      "name": "日本甲骨文",
+      "url": "hysteria2://130ec091-df05-4af9-9695-dc982e98a8ec@168.138.194.92:28253?sni=www.bing.com&insecure=1#%E6%97%A5%E6%9C%AC%E7%94%B2%E9%AA%A8%E6%96%87",
+      "enabled": true,
+      "status": "unchecked",
+      "isUpdating": false
+    },
+    {
+      "id": "f2d812e1-d3c6-4276-ac0f-fccc29f53e92",
+      "name": "泰国双lsp家宽 IDC",
+      "url": "vmess://ew0KICAidiI6ICIyIiwNCiAgInBzIjogIuazsOWbveWPjGxzcOWutuWuvSBJREMiLA0KICAiYWRkIjogIm0ubW9kemFyZC5jb20iLA0KICAicG9ydCI6ICI4MDgwIiwNCiAgImlkIjogImYyZTE3YjRkLTIyZmQtNDRhNC05MGRiLTQwNjQ5NzE3YmU4ZSIsDQogICJhaWQiOiAiMCIsDQogICJzY3kiOiAiYXV0byIsDQogICJuZXQiOiAidGNwIiwNCiAgInR5cGUiOiAiaHR0cCIsDQogICJob3N0IjogInNwZWVkdGVzdC5hZHNsdGhhaWxhbmQuY29tIiwNCiAgInBhdGgiOiAiLyIsDQogICJ0bHMiOiAiIiwNCiAgInNuaSI6ICIiLA0KICAiYWxwbiI6ICIiLA0KICAiZnAiOiAiIg0KfQ==",
+      "enabled": true,
+      "status": "unchecked",
+      "isUpdating": false
+    },
+    {
+      "id": "69e9232c-8078-463c-bdeb-bc5f5aaed8f1",
+      "name": "日本 YXVM",
+      "url": "vmess://ew0KICAidiI6ICIyIiwNCiAgInBzIjogIuaXpeacrCBZWFZNIiwNCiAgImFkZCI6ICI0Ni4zLjQ3LjI1MCIsDQogICJwb3J0IjogIjIwMDAyIiwNCiAgImlkIjogImU1Y2U0MjVlLTBiODQtNDM1Yy1hZWU1LTlmOWVjYmUyY2IxNiIsDQogICJhaWQiOiAiMCIsDQogICJzY3kiOiAiYXV0byIsDQogICJuZXQiOiAidGNwIiwNCiAgInR5cGUiOiAibm9uZSIsDQogICJob3N0IjogIiIsDQogICJwYXRoIjogIiIsDQogICJ0bHMiOiAiIiwNCiAgInNuaSI6ICIiLA0KICAiYWxwbiI6ICIiLA0KICAiZnAiOiAiIg0KfQ==",
+      "enabled": true,
+      "status": "unchecked",
+      "isUpdating": false
+    },
+    {
+      "id": "aad98c73-0ce4-474e-89ca-2485d6be86ab",
+      "name": "小黄鸡-Oracle SG",
+      "url": "vless://631dd873-8468-4354-e6e0-c22430fcf04e@stdsg.xjc.dpdns.org:39373?encryption=none&flow=xtls-rprx-vision&security=reality&sni=www.lovelive-anime.jp&fp=safari&pbk=R2gKMF0Tetlnesc1pPkZH9NaOeehw-f5_U9JKG_cLjU&type=tcp&headerType=none#%E5%B0%8F%E9%BB%84%E9%B8%A1-Oracle%20SG\n",
+      "enabled": true,
+      "isUpdating": false
+    }
+  ],
+  "profiles": []
+}
