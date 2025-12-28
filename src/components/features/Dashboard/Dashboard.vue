@@ -239,27 +239,25 @@ const handleProfileReorder = (fromIndex, toIndex) => {
 };
 
 // --- Backup & Restore ---
-// 使用与经典布局完全相同的导出逻辑
-// 注意：dataStore.subscriptions 包含所有订阅和手动节点（未过滤）
-// 而 subscriptions/manualNodes composables 返回的是过滤后的数据
+// 完全复制经典布局的导出逻辑 (SettingsView.vue L147-170)
+// 注意：经典布局中 subscriptions 来自 dataStore.subscriptions（包含所有项目）
+//      manualNodes 来自 useManualNodes composable（过滤后的手动节点）
+//      profiles 来自 dataStore.profiles
 const exportBackup = () => {
   try {
-    // 直接从 dataStore 获取原始数据（与经典布局一致）
-    // dataStore.subscriptions 是 computed，包含所有项目
-    // dataStore.profiles 是 computed，包含所有订阅组
-    const allSubscriptions = dataStore.subscriptions || [];
-    const allProfiles = dataStore.profiles || [];
+    // 为了与经典布局完全一致，我们需要创建新的变量来获取 dataStore 的原始数据
+    // 因为 subscriptions/manualNodes/profiles 变量名已被 composables 占用
+    const dataStoreSubscriptions = dataStore.subscriptions;  // computed 属性，包含所有项目
+    const dataStoreProfiles = dataStore.profiles;  // computed 属性，包含所有订阅组
     
-    // 分离订阅和手动节点（与后端存储格式一致）
-    const subscriptionItems = allSubscriptions.filter(item => item.url && /^https?:\/\//.test(item.url));
-    const manualNodeItems = allSubscriptions.filter(item => !item.url || !/^https?:\/\//.test(item.url));
+    // 从所有项目中过滤出手动节点（与经典布局中 useManualNodes 的逻辑一致）
+    const dataStoreManualNodes = dataStoreSubscriptions?.filter(item => !item.url || !/^https?:\/\//.test(item.url)) || [];
     
     const backupData = {
-      subscriptions: subscriptionItems,
-      manualNodes: manualNodeItems,
-      profiles: allProfiles,
+      subscriptions: dataStoreSubscriptions || [],
+      manualNodes: dataStoreManualNodes,
+      profiles: dataStoreProfiles || [],
     };
-    
     const jsonString = JSON.stringify(backupData, null, 2);
     const blob = new Blob([jsonString], { type: 'application/json' });
     const url = URL.createObjectURL(blob);
