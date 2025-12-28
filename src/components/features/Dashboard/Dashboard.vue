@@ -239,25 +239,33 @@ const handleProfileReorder = (fromIndex, toIndex) => {
 };
 
 // --- Backup & Restore ---
-// 完全复制经典布局的导出逻辑 (SettingsView.vue L147-170)
-// 注意：经典布局中 subscriptions 来自 dataStore.subscriptions（包含所有项目）
-//      manualNodes 来自 useManualNodes composable（过滤后的手动节点）
-//      profiles 来自 dataStore.profiles
+// 修复：dataStore.subscriptions 是 computed 属性，直接访问会返回 undefined
+// 需要使用已经通过 storeToRefs 解构的变量，或者创建新的 refs
 const exportBackup = () => {
   try {
-    // 为了与经典布局完全一致，我们需要创建新的变量来获取 dataStore 的原始数据
-    // 因为 subscriptions/manualNodes/profiles 变量名已被 composables 占用
-    const dataStoreSubscriptions = dataStore.subscriptions;  // computed 属性，包含所有项目
-    const dataStoreProfiles = dataStore.profiles;  // computed 属性，包含所有订阅组
+    // 方法1：直接使用 storeToRefs 获取响应式引用
+    const { subscriptions: allItems, profiles: allProfiles } = storeToRefs(dataStore);
     
-    // 从所有项目中过滤出手动节点（与经典布局中 useManualNodes 的逻辑一致）
-    const dataStoreManualNodes = dataStoreSubscriptions?.filter(item => !item.url || !/^https?:\/\//.test(item.url)) || [];
+    console.log('=== 导出备份调试信息 ===');
+    console.log('1. allItems (通过 storeToRefs):', allItems.value);
+    console.log('2. allProfiles (通过 storeToRefs):', allProfiles.value);
+    console.log('3. allItems 数量:', allItems.value?.length || 0);
+    console.log('4. allProfiles 数量:', allProfiles.value?.length || 0);
+    
+    // 从所有项目中过滤出手动节点
+    const manualNodeItems = allItems.value?.filter(item => !item.url || !/^https?:\/\//.test(item.url)) || [];
+    
+    console.log('5. 过滤后的手动节点数量:', manualNodeItems.length);
     
     const backupData = {
-      subscriptions: dataStoreSubscriptions || [],
-      manualNodes: dataStoreManualNodes,
-      profiles: dataStoreProfiles || [],
+      subscriptions: allItems.value || [],
+      manualNodes: manualNodeItems,
+      profiles: allProfiles.value || [],
     };
+    
+    console.log('6. 最终备份数据:', backupData);
+    console.log('=== 调试信息结束 ===');
+    
     const jsonString = JSON.stringify(backupData, null, 2);
     const blob = new Blob([jsonString], { type: 'application/json' });
     const url = URL.createObjectURL(blob);
