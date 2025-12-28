@@ -241,14 +241,22 @@ const handleProfileReorder = (fromIndex, toIndex) => {
 // --- Backup & Restore ---
 const exportBackup = () => {
   try {
-    // 从 dataStore 获取原始完整数据，而不是使用过滤后的 subscriptions 和 manualNodes
-    // subscriptions 和 manualNodes composables 只返回过滤后的数据（按协议类型分类）
-    // 而 dataStore.subscriptions 包含所有订阅和手动节点的完整列表
-    const allItems = dataStore.subscriptions || [];
+    // dataStore.subscriptions 是一个 computed 属性，需要通过 .value 访问
+    // 它包含所有订阅和手动节点的完整列表（来自 subscriptionStore.items）
+    const allItems = dataStore.subscriptions.value || [];
+    
+    // 添加调试日志
+    console.log('[Export] Total items:', allItems.length);
+    console.log('[Export] All items:', allItems);
+    console.log('[Export] Profiles:', profiles.value);
     
     // 分离订阅和手动节点
     const subscriptionItems = allItems.filter(item => item.url && /^https?:\/\//.test(item.url));
     const manualNodeItems = allItems.filter(item => !item.url || !/^https?:\/\//.test(item.url));
+    
+    console.log('[Export] Subscriptions:', subscriptionItems.length);
+    console.log('[Export] Manual Nodes:', manualNodeItems.length);
+    console.log('[Export] Profiles:', profiles.value?.length || 0);
     
     const backupData = {
       subscriptions: subscriptionItems,
