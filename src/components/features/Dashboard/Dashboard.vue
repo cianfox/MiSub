@@ -241,10 +241,19 @@ const handleProfileReorder = (fromIndex, toIndex) => {
 // --- Backup & Restore ---
 const exportBackup = () => {
   try {
+    // 从 dataStore 获取原始完整数据，而不是使用过滤后的 subscriptions 和 manualNodes
+    // subscriptions 和 manualNodes composables 只返回过滤后的数据（按协议类型分类）
+    // 而 dataStore.subscriptions 包含所有订阅和手动节点的完整列表
+    const allItems = dataStore.subscriptions || [];
+    
+    // 分离订阅和手动节点
+    const subscriptionItems = allItems.filter(item => item.url && /^https?:\/\//.test(item.url));
+    const manualNodeItems = allItems.filter(item => !item.url || !/^https?:\/\//.test(item.url));
+    
     const backupData = {
-      subscriptions: subscriptions.value,
-      manualNodes: manualNodes.value,
-      profiles: profiles.value,
+      subscriptions: subscriptionItems,
+      manualNodes: manualNodeItems,
+      profiles: profiles.value || [],
     };
 
     const jsonString = JSON.stringify(backupData, null, 2);
